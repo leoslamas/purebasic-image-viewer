@@ -36,8 +36,7 @@ If Not OpenPreferences("pref.ini")
 	EndIf
 	
 	PreferenceGroup("Pass")
-	senha_enc.s = Space(1024)
-	Base64Encoder(@senha, StringByteLength(senha), @senha_enc,1024)
+	senha_enc.s = Base64Encoder(@senha, StringByteLength(senha))
 	WritePreferenceString("var",senha_enc)
 	PreferenceGroup("Path")
 	
@@ -49,8 +48,7 @@ If Not OpenPreferences("pref.ini")
 		End
 	EndIf
 	
-	dir_enc.s = Space(1024)
-	Base64Encoder(@dir,StringByteLength(dir),@dir_enc,1024)
+	dir_enc.s = Base64Encoder(@dir,StringByteLength(dir))
 	WritePreferenceString("var",dir_enc)
 	ClosePreferences()
 	If OpenPreferences("pref.ini")
@@ -70,8 +68,7 @@ Else
 			Continue
 		EndIf
 		
-		senha_enc.s = Space(1024)
-		Base64Encoder(@senha,StringByteLength(senha),@senha_enc,1024)
+		senha_enc.s = Base64Encoder(@senha,StringByteLength(senha))
 		PreferenceGroup("Pass")
 		If senha_enc = ReadPreferenceString("var","")
 			MessageRequester("Ok!","Senha Correta!")
@@ -90,14 +87,14 @@ Else
 	dir.s = Space(1024)
 	PreferenceGroup("Path")
 	PokeS(@dir_dec,ReadPreferenceString("var",""))
-	Base64Decoder(@dir_dec,StringByteLength(dir_dec),@dir,1024)
+	Base64Decoder(dir, @dir_dec,StringByteLength(dir_dec))
 EndIf
 ClosePreferences()
 
-senha = #NULL$
-senha_enc = #NULL$
-dir_dec = #NULL$
-dir_enc = #NULL$
+senha = #Null$
+senha_enc = #Null$
+dir_dec = #Null$
+dir_enc = #Null$
 
 AddKeyboardShortcut(0,#PB_Shortcut_Left,1)
 AddKeyboardShortcut(0,#PB_Shortcut_Right,2)
@@ -131,7 +128,7 @@ Global NewList B()
 Global id,resize.f = 1,posY = 0,posX = 0
 
 ListFilesRecursive(dir,F())
-dir = #NULL$
+dir = #Null$
 
 Global index = 1
 ForEach F()
@@ -365,11 +362,14 @@ Procedure ListFilesRecursive(Dir.s, List Files.str())
 EndProcedure
 
 
-; IDE Options = PureBasic 5.31 (Windows - x64)
+; IDE Options = PureBasic 5.72 (Windows - x64)
+; CursorPosition = 105
+; FirstLine = 70
+; Folding = --
 ; EnableOnError
-; Executable = C:\Users\Leo\Desktop\MADE\_Purebasic\IMG.exe
+; Executable = ..\..\Documentos\UTIL\IMG.exe
 ; DisableDebugger
 ; EnablePurifier
-; EnableCompileCount = 229
-; EnableBuildCount = 21
+; EnableCompileCount = 233
+; EnableBuildCount = 22
 ; EnableExeConstant
