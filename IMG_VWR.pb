@@ -112,6 +112,7 @@ AddKeyboardShortcut(0,#PB_Shortcut_Pad8,7)
 AddKeyboardShortcut(0,#PB_Shortcut_Pad5,8)
 AddKeyboardShortcut(0,#PB_Shortcut_Pad4,9)
 AddKeyboardShortcut(0,#PB_Shortcut_Pad6,10)
+AddKeyboardShortcut(0,#PB_Shortcut_Space,11)
 
 ;//////////////////////////////////////////////////////////////////
 
@@ -180,7 +181,9 @@ Repeat
 				Case 9
 					posX+50
 				Case 10
-					posX-50
+				  posX-50
+				Case 11
+				  End
 					
 			EndSelect
 	EndSelect
@@ -366,10 +369,13 @@ EndProcedure
 
 
 ; IDE Options = PureBasic 5.31 (Windows - x64)
+; CursorPosition = 185
+; FirstLine = 150
+; Folding = --
 ; EnableOnError
-; Executable = C:\Users\Leo\Desktop\MADE\_Purebasic\IMG.exe
+; Executable = ..\..\..\Documentos\UTIL\IMG.exe
 ; DisableDebugger
 ; EnablePurifier
-; EnableCompileCount = 229
-; EnableBuildCount = 21
+; EnableCompileCount = 233
+; EnableBuildCount = 23
 ; EnableExeConstant
