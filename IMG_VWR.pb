@@ -8,9 +8,9 @@ UsePNGImageDecoder()
 UseTGAImageDecoder()
 UseTIFFImageDecoder()
 
-height = DesktopHeight(0)
-width = DesktopWidth(0)
-OpenWindow(0,0,0,width,height,"IMG VWR",#PB_Window_BorderLess)
+height = DesktopHeight(0)/2
+width = DesktopWidth(0)/2
+OpenWindow(0,0,0,width,height,"IMG VWR",#PB_Window_BorderLess|#PB_Window_SizeGadget)
 If Not OpenWindowedScreen(WindowID(0),0,0,width,height,1,0,0,#PB_Screen_NoSynchronization)
 	MessageRequester("Erro!", "Nao foi possivel iniciar o DirectX!",#PB_MessageRequester_Ok|#MB_ICONERROR)
 EndIf
@@ -109,6 +109,11 @@ AddKeyboardShortcut(0,#PB_Shortcut_Pad8,7)
 AddKeyboardShortcut(0,#PB_Shortcut_Pad5,8)
 AddKeyboardShortcut(0,#PB_Shortcut_Pad4,9)
 AddKeyboardShortcut(0,#PB_Shortcut_Pad6,10)
+AddKeyboardShortcut(0,#PB_Shortcut_Space,11)
+AddKeyboardShortcut(0,#PB_Shortcut_Home,12)
+AddKeyboardShortcut(0,#PB_Shortcut_End,13)
+AddKeyboardShortcut(0,#PB_Shortcut_Delete,14)
+AddKeyboardShortcut(0,#PB_Shortcut_PageDown,15)
 
 ;//////////////////////////////////////////////////////////////////
 
@@ -170,14 +175,16 @@ Repeat
 						posY+40
 					EndIf
 					
-				Case 7
+				Case 7, 12
 					posY+50
-				Case 8 
+				Case 8, 13 
 					posY-50
-				Case 9
+				Case 9, 14
 					posX+50
-				Case 10
-					posX-50
+				Case 10, 15
+				  posX-50
+				Case 11
+				  End
 					
 			EndSelect
 	EndSelect
@@ -362,14 +369,14 @@ Procedure ListFilesRecursive(Dir.s, List Files.str())
 EndProcedure
 
 
-; IDE Options = PureBasic 5.72 (Windows - x64)
-; CursorPosition = 105
-; FirstLine = 70
+; IDE Options = PureBasic 5.31 (Windows - x64)
+; CursorPosition = 186
+; FirstLine = 153
 ; Folding = --
 ; EnableOnError
-; Executable = ..\..\Documentos\UTIL\IMG.exe
+; Executable = ..\..\..\Documentos\UTIL\IMG.exe
 ; DisableDebugger
 ; EnablePurifier
-; EnableCompileCount = 233
-; EnableBuildCount = 22
+; EnableCompileCount = 239
+; EnableBuildCount = 26
 ; EnableExeConstant
